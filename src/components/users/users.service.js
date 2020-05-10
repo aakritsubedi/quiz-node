@@ -15,20 +15,21 @@ module.exports = {
     fetchById: async (id) => {
         let user = null;
         try {
-            user = await userModel.fetchById()
+            user = await userModel.fetchById(id)
         } catch (e) {
             throw e;
         }
         return user;
     },
     create: async (userData) => {
-        let user = null;
+        let users = null;
         try {
             users = await userModel.create(userData)
+            console.log(users)
         } catch (e) {
             throw e;
         }
-        return user;
+        return users;
     },
     update: async (userData) => {
         let user = null;

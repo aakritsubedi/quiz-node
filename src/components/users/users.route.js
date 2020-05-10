@@ -11,5 +11,6 @@ router
     .route("/:id")
     .get(userController.fetchById)
     .put(userController.update)
+    .delete(userController.remove)
 
 module.exports = router;

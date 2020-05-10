@@ -1,12 +1,12 @@
 const router = require("express").Router();
 
-const userRoutes = require('/home/aakritsubedi/Desktop/quiz/quiz-node/src/components/users/users.route.js');
-const loginRoutes = require('/home/aakritsubedi/Desktop/quiz/quiz-node/src/components/auth/auth.route.js');
+const userRoutes = require('../src/components/users/users.route');
+const loginRoutes = require('../src/components/auth/auth.route');
 
-router.use('/login', (req,res, next) => {
+router.use('/login',loginRoutes);
+router.use('/users',(req,res, next) => {
   console.log("Done");
   next();
-},loginRoutes);
-router.use('/users', userRoutes);
+}, userRoutes);
 
 module.exports = router;

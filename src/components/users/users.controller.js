@@ -17,7 +17,7 @@ module.exports = {
         try {
             user = await userServices.fetchById(id);
             if(user.length !== 0) {
-                response.json(userInfo);
+                response.json(user);
             }
             next({
                 message: 'Not found !!!'
@@ -31,7 +31,7 @@ module.exports = {
         const users = request.body;
         try {
           user = await userServices.create(users);
-          if(userInfo.affectedRows){
+          if(user){
             response.json({
               message: 'Added Successfully'
             });
@@ -43,9 +43,10 @@ module.exports = {
     update: async (request, response, next) => {
         let userInfo = null;
         const userData = request.body;
+      
         try {
           userInfo = await userServices.update(userData);
-          if(userInfo.affectedRows){
+          if(userInfo){
             response.json({
               message: 'Updated Successfully'
             });
