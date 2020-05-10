@@ -3,7 +3,31 @@
 
 ## Project Installation 
 - clone the repository
-  - `git clone git@github.com:aakritsubedi/quiz-node.git`
-- `yarn` || `npm` to install all the required packages
-- `yarn start` || `npm start` to run the server
-  - your App running at: Local: http://localhost:8080/
+
+```bash
+$ git clone git@github.com:aakritsubedi/quiz-node.git
+```
+
+## To install all the required packages
+
+```bash
+$ npm install
+```
+OR
+
+```bash
+$ yarn
+```
+
+## To run the server
+
+```bash
+$ npm start
+```
+OR
+
+```bash
+$ yarn start
+```
+
+## App will be running at: Local: http://localhost:8080/
