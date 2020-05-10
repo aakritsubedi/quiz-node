@@ -48,16 +48,24 @@ module.exports = {
     },
     login: async (user) => {
         let userData = null;
-        let newUser= null;
+        let id = null;
         try {
             userData = await userModel.fetchByEmail(user.email)
             if (!userData.length){
-                newUser = module.exports.create(user)
+                const newUser = await module.exports.create(user)
+                id = newUser.insertId
             }
-            userData = new Set({...userData, ...newUser})
-            const token = jwt.sign(userData, "jwttoken", {
+            let data = {
+                id: id !== null ? id : userData[0].id,
+                ...user
+            }
+            const token = jwt.sign(data, "jwttoken", {
                 expiresIn: "3h",
             });
+            return {
+                token: token,
+                user: data,
+            };
         } catch (e) {
             throw e;
         }
