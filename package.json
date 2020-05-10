@@ -9,6 +9,15 @@
     "lint:fix": "eslint src test --fix",
     "test": "mocha"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{md,yml,yml,json}": [
+      "prettier --write"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -38,6 +47,7 @@
     "chai": "^4.2.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
     "mocha": "^7.1.2",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.5",
