@@ -53,5 +53,15 @@ module.exports= {
     } catch (err) {
       throw err;
     }
+  },
+  fetchByEmail: (email) => {
+    const sql = `SELECT * FROM users WHERE email=${email}`;
+    
+    try {
+      const user = await pool.query(sql);
+      return user;
+    } catch (err) {
+      throw err;
+    }
   }
 }
