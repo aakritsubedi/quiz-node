@@ -25,7 +25,6 @@ module.exports = {
         let users = null;
         try {
             users = await userModel.create(userData)
-            console.log(users)
         } catch (e) {
             throw e;
         }

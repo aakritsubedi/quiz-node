@@ -9,7 +9,6 @@ module.exports = {
 
     try {
       await pool.query(sql);
-      console.log("User table created.");
     } catch (err) {
       throw err;
     }
@@ -18,7 +17,6 @@ module.exports = {
     const sql = `DROP TABLE IF EXISTS users`;
     try {
       await pool.query(sql);
-      console.log("User table deleted.");
     } catch (err) {
       throw err;
     }
