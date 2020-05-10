@@ -4,7 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const createTables = require("./src/migrations/index");
-const errorHandle = require("./src/middlewares/handleError");
+const {errorHandler} = require("./src/middlewares/handleError");
 
 // Initilize all database tables
 createTables.createAllTables();
@@ -20,7 +20,7 @@ app.use(cors());
 app.use(routes);
 
 // Errors
-app.use(errorHandle);
+app.use(errorHandler);
 
 
 module.exports = app;
