@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+    - "stable"
+
+cache:
+    directories:
+        - "node_modules"
+    yarn: true
+
+install: npm install
+
+script:
+    - npm run test
