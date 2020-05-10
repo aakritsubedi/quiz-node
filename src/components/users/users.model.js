@@ -34,7 +34,7 @@ module.exports= {
       throw err;
     }
   },
-  update: (id,{ user_id, first_name, last_name, photo, email}) => {
+  update: ({id, user_id, first_name, last_name, photo, email}) => {
     const sql = `UPDATE users SET user_id='${user_id}', first_name='${first_name}', last_name='${last_name}', photo='${photo}', email='${email}' WHERE id=${id} returning *`;
 
     try {
