@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors')
 const bodyParser = require('body-parser');
-// const routes = require('./api/routes');
+const routes = require('./routes');
 const createTables = require("./src/migrations/index");
 
 // Initilize all database tables
@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 // CORS
 app.use(cors);
 
-// app.use(routes);
+app.use(routes);
 
 // Errors
 app.use((req,res, next) => {

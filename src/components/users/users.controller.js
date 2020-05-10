@@ -28,9 +28,9 @@ module.exports = {
     },
     create: async (request, response, next) => {
         let user = null;
-        const user = request.body;
+        const users = request.body;
         try {
-          user = await userServices.create(user);
+          user = await userServices.create(users);
           if(userInfo.affectedRows){
             response.json({
               message: 'Added Successfully'
