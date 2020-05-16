@@ -14,7 +14,7 @@ module.exports = {
       throw err;
     }
   },
-  fetchByCaterogy: async (category) => {
+  fetchByCategory: async (category) => {
     const sql = `SELECT questions.*, options.options FROM questions INNER JOIN options ON questions.id = options.que_id WHERE questions.category='${category}'`;
 
     try {
