@@ -1,10 +1,11 @@
 const qaServices = require("./que.service");
+const { getApi } = require("../../utils/db/model");
 
 module.exports = {
   fetchAll: async (request, response, next) => {
     try {
       const qas = await qaServices.fetchAll();
-      response.json(qas);
+      response.status(200).json(getApi({ data: qas }));
     } catch (e) {
       next(e);
     }
@@ -14,7 +15,7 @@ module.exports = {
     const category = request.params.category;
     try {
       const qas = await qaServices.fetchByCategory(category);
-      response.json(qas);
+      response.status(200).json(getApi({ data: qas }));
     } catch (e) {
       next(e);
     }
@@ -26,9 +27,13 @@ module.exports = {
     try {
       const res = await qaServices.update(que);
       if (res) {
-        response.json({
-          message: "Updated Successfully",
-        });
+        response.status(200).json(
+          getApi({
+            data: {
+              message: "Updated Successfully",
+            },
+          })
+        );
       }
     } catch (e) {
       next(e);
@@ -36,14 +41,17 @@ module.exports = {
   },
 
   insert: async (request, response, next) => {
-    const data = request.body;
-
+    const qData = request.body;
     try {
-      const res = await qaServices.insert(data);
+      const res = await qaServices.insert(qData);
       if (res) {
-        response.json({
-          message: "Inserted Successfully",
-        });
+        response.status(200).json(
+          getApi({
+            data: {
+              message: "Inserted Successfully",
+            },
+          })
+        );
       }
     } catch (e) {
       next(e);
@@ -55,9 +63,13 @@ module.exports = {
     try {
       const res = await qaServices.delete(id);
       if (res) {
-        response.json({
-          message: "Deleted Successfully",
-        });
+        response.status(200).json(
+          getApi({
+            data: {
+              message: "Deleted Successfully",
+            },
+          })
+        );
       }
     } catch (e) {
       next(e);
