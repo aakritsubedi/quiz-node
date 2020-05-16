@@ -2,7 +2,7 @@ const qaServices = require("./que.service");
 
 module.exports = {
 
-    fetchByCategory = async (request, response, next) => {
+    fetchByCategory: async (request, response, next) => {
         const category = request.params.category;
         try {
             const qas = await qaServices.fetchByCategory(category);
@@ -12,7 +12,7 @@ module.exports = {
         }
     },
 
-    update = async (request, response, next) => {
+    update: async (request, response, next) => {
         const id = request.params.id;
 
         try {
@@ -27,7 +27,7 @@ module.exports = {
         }
     },
 
-    insert = async (request, response, next) => {
+    insert: async (request, response, next) => {
         const data = request.body;
 
         try {

@@ -2,7 +2,7 @@ const qaModel = require("./que.model");
 
 module.exports = {
 
-    fetchByCategory = async (category) => {
+    fetchByCategory: async (category) => {
         let qas = null;
         try {
             qas = await qaModel.fetchByCategory(category);
@@ -12,7 +12,7 @@ module.exports = {
         return qas;
     },
 
-    update = async (id) => {
+    update: async (id) => {
         let res = null;
         try {
             res = await qaModel.update(id);
@@ -22,7 +22,7 @@ module.exports = {
         return res;
     },
 
-    insert = async (data) => {
+    insert: async (data) => {
         let res = null;
         try {
             res = await qaModel.insert(data);
