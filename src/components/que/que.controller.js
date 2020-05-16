@@ -21,10 +21,10 @@ module.exports = {
   },
 
   update: async (request, response, next) => {
-    const id = request.params.id;
+    const que = request.body;
 
     try {
-      const res = await qaServices.update(id);
+      const res = await qaServices.update(que);
       if (res) {
         response.json({
           message: "Updated Successfully",

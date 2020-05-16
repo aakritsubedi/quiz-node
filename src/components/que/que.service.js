@@ -20,20 +20,20 @@ module.exports = {
     return qas;
   },
 
-  update: async (id) => {
+  update: async (que) => {
     let res = null;
     try {
-      res = await qaModel.update(id);
+      res = await qaModel.update(que);
     } catch (e) {
       throw e;
     }
     return res;
   },
 
-  insert: async (data) => {
+  insert: async (que) => {
     let res = null;
     try {
-      res = await qaModel.insert(data);
+      res = await qaModel.insert(que);
     } catch (e) {
       throw e;
     }
