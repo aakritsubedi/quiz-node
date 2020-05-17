@@ -40,10 +40,7 @@ fi
 
 printfln "Changes detected in following lambdas:"
 
-testFunction() {
-    printfln "in test function"
-    pwd
-}
+
 
 for lambda in $lambdas; do
     printf "$lambda\n"
@@ -57,10 +54,9 @@ for lambda in $lambdas; do
         printfln "in dev/master"
     
     fi
-
-    testFunction
+    pwd
 
     printfln "done !!"
-    done
+done
 
 
