@@ -35,4 +35,9 @@ lambdas=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/.
 
 printfln "$lambdas"
 
+if [ -z "${lambdas}" ]; then
+    printfln "Sorry no changes made to lambdas"
+    exit 0
+fi
+
 printfln "done !!"
