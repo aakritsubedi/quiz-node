@@ -40,13 +40,20 @@ fi
 
 printfln "Changes detected in following lambdas:"
 
+#aws lambda update-function-code --zip-file=fileb://code.zip --region=us-east-1 --function-name=
+
 buildAndUpload() {
     cd $1 && make build
+    printfln $2
     cd -
 }
 
 for lambda in $lambdas; do
     printf "$lambda\n"
+
+    lambda_name=${lambda/src\/components\//}
+    lambda_name=${lambda_name::-1}
+
     
     if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
         printfln "${green}Skipping uploads for pull request build$reset"
@@ -59,9 +66,11 @@ for lambda in $lambdas; do
     fi
     lambda_dir="$TRAVIS_BUILD_DIR/${lambda}"
     
-    buildAndUpload $lambda_dir
+    buildAndUpload $lambda_dir $lambda_name
 
-    printfln "done !!"
 done
+
+printfln "done !!"
+
 
 
