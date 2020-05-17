@@ -1,4 +1,36 @@
+#!/bin/bash
+
+# shellcheck disable=SC2059
 
 set -e
 
-printfln "$TRAVIS_COMMIT_RANGE"
+
+printfln() {
+  printf "\n$1\n"
+}
+
+BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$TRAVIS_BRANCH"; else echo "$TRAVIS_PULL_REQUEST_BRANCH"; fi)
+
+export BRANCH
+
+if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
+    COMMIT_RANGE="${TRAVIS_COMMIT_RANGE/.../..}"
+fi
+
+if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
+  if ! git rev-list "$TRAVIS_COMMIT_RANGE" >/test-travis/null; then
+    TRAVIS_COMMIT_RANGE=
+  fi
+fi
+
+
+
+
+
+printfln "$COMMIT_RANGE"
+
+printfln "Starting the simulation...."
+
+git log --oneline $COMMIT_RANGE
+
+printfln "done !!"
