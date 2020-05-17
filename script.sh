@@ -31,7 +31,7 @@ printfln "Starting the simulation...."
 
 git log --oneline $COMMIT_RANGE
 
-lambdas=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "test\/.+?" | cat | uniq)
+lambdas=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/.+?\/" | cat | uniq)
 
 printfln "$lambdas"
 

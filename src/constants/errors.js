@@ -1,7 +1,7 @@
 module.exports = {
   NOT_FOUND: {
     code: 404,
-    message: "Sorry, requested object doesn't exist",
+    message: "Sorry, requested object doesn't exists",
   },
   AUTH_FAILED: {
     code: 409,
