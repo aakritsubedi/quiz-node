@@ -41,7 +41,7 @@ fi
 printfln "Changes detected in following lambdas:"
 
 buildAndUpload() {
-    cd $1 && make build && cd -
+    cd $1 && pwd && cd -
 }
 
 for lambda in $lambdas; do
