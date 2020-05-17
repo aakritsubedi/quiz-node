@@ -54,7 +54,9 @@ for lambda in $lambdas; do
         printfln "in dev/master"
     
     fi
-    pwd
+    lambda_dir="$TRAVIS_BUILD_DIR/${lambda}"
+    printfln "$lambda_dir"
+
 
     printfln "done !!"
 done
