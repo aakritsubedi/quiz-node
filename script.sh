@@ -42,5 +42,6 @@ printfln "Changes detected in following lambdas:"
 
 for lambda in $lambdas; do
     printf "$lambda\n"
+done
 
 printfln "done !!"
