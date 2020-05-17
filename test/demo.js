@@ -10,6 +10,6 @@ describe("add", () => {
   });
 
   it("negative test", () => {
-    except(add(5, 8)).not.equal(8);
+    except(add(5, 9)).not.equal(8);
   });
 });
