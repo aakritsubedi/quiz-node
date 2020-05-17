@@ -1,5 +1,4 @@
 const userService = require("../users/users.service");
-console.log("test");
 
 module.exports = {
   login: async (request, response, next) => {

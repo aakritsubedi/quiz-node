@@ -40,8 +40,28 @@ fi
 
 printfln "Changes detected in following lambdas:"
 
+testFunction() {
+    printfln "in test function"
+    pwd
+}
+
 for lambda in $lambdas; do
     printf "$lambda\n"
+    
+    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+        printfln "${green}Skipping uploads for pull request build$reset"
+        exit 0
+    fi
+
+    if [ "${BRANCH}" == "dev" ] || [ "${BRANCH}" == "master" ]; then
+        printfln "in dev/master"
+    
+    fi
+
+    testFunction
+
+    printfln "done !!"
+
 done
 
-printfln "done !!"
+
