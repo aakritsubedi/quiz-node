@@ -44,7 +44,8 @@ printfln "Changes detected in following lambdas:"
 
 buildAndUpload() {
     cd $1 && pwd
-    printfln $2
+    echo "hello"
+    # aws lambda update-function-code --zip-file=fileb://.tmp/package.zip --region=us-east-1 --function-name=$2
     cd -
 }
 
