@@ -55,7 +55,7 @@ for lambda in $lambdas; do
     
     fi
     lambda_dir="$TRAVIS_BUILD_DIR/${lambda}"
-    cd $lambda_dir && pwd
+    cd $lambda_dir && pwd && cd -
 
     printfln "done !!"
 done
