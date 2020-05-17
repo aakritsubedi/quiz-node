@@ -1,7 +1,7 @@
 module.exports = {
   NOT_FOUND: {
     code: 404,
-    message: "No record found in database",
+    message: "Sorry, requested object doesn't exist",
   },
   AUTH_FAILED: {
     code: 409,
