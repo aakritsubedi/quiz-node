@@ -14,17 +14,15 @@ BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$TRAVIS_BRANCH"; e
 export BRANCH
 
 if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
-    COMMIT_RANGE="${TRAVIS_COMMIT_RANGE/.../..}"
-fi
-
-if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
-  if ! git rev-list "$TRAVIS_COMMIT_RANGE" >/test-travis/null; then
+  if ! git rev-list "$TRAVIS_COMMIT_RANGE" >/dev/null; then
     TRAVIS_COMMIT_RANGE=
   fi
 fi
 
 
-
+if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
+    COMMIT_RANGE="${TRAVIS_COMMIT_RANGE/.../..}"
+fi
 
 
 printfln "$COMMIT_RANGE"
