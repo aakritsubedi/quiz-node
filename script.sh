@@ -43,7 +43,7 @@ printfln "Changes detected in following lambdas:"
 #aws lambda update-function-code --zip-file=fileb://code.zip --region=us-east-1 --function-name=
 
 buildAndUpload() {
-    cd $1 && make build
+    cd $1 && pwd
     printfln $2
     cd -
 }
