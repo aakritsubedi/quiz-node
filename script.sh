@@ -61,7 +61,6 @@ for lambda in $lambdas; do
     testFunction
 
     printfln "done !!"
-
-done
+    done
 
 
