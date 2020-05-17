@@ -40,7 +40,9 @@ fi
 
 printfln "Changes detected in following lambdas:"
 
-
+buildAndUpload() {
+    cd $1 && make build && cd -
+}
 
 for lambda in $lambdas; do
     printf "$lambda\n"
@@ -55,7 +57,8 @@ for lambda in $lambdas; do
     
     fi
     lambda_dir="$TRAVIS_BUILD_DIR/${lambda}"
-    cd $lambda_dir && pwd && cd -
+    
+    buildAndUpload $lambda_dir
 
     printfln "done !!"
 done
