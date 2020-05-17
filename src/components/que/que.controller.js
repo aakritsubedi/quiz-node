@@ -1,4 +1,6 @@
 const qaServices = require("./que.service");
+console.log("test");
+
 module.exports = {
   fetchAll: async (request, response, next) => {
     try {
