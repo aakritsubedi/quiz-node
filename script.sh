@@ -31,13 +31,16 @@ printfln "Starting the simulation...."
 
 git log --oneline $COMMIT_RANGE
 
-lambdas=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/.+?\/" | cat | uniq)
-
-printfln "$lambdas"
+lambdas=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/components\/.+?\/" | cat | uniq)
 
 if [ -z "${lambdas}" ]; then
-    printfln "Sorry no changes made to lambdas"
+    printfln "Looks like no changes made to lambdas...skipping the build and upload"
     exit 0
 fi
+
+printfln "Changes detected in following lambdas:"
+
+for lambda in $lambdas; do
+    printf "$lambda\n"
 
 printfln "done !!"
