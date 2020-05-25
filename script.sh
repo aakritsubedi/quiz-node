@@ -19,9 +19,9 @@ printfln "${BRANCH}"
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
     printfln "i am heres"
-    curl -H "Authorization: token_$GITHUB_TOKEN" -X POST \
+    curl -H "Authorization: token_99482c97e6cdd4f48855f047fb8c465886ba30a7" -X POST \
     -d "{\"body\": \"Hello world\"}" \
-    "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"
+    https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments
 fi
 
 printfln "Done..."
