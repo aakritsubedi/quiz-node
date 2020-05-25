@@ -13,7 +13,6 @@ install: npm install
 before_script:
   - git config --global user.name "samirsilwal"
   - git config --global user.email "samirsilwal2424@gmail.com"
-  - git fetch --unshallow
 
 script:
   - npm run test
