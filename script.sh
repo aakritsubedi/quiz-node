@@ -40,38 +40,16 @@ fi
 
 printfln "Changes detected in following lambdas:"
 
-#aws lambda update-function-code --zip-file=fileb://code.zip --region=us-east-1 --function-name=
+printfln "${lambdas}"
 
-buildAndUpload() {
-    cd $1 && pwd
-    echo "hello"
-    # aws lambda update-function-code --zip-file=fileb://.tmp/package.zip --region=us-east-1 --function-name=$2
-    cd -
-}
+if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
 
-for lambda in $lambdas; do
-    printf "$lambda\n"
+    curl -H "Authorization: token a62af12406ca3cc8cdc2f4c58b64f7d310db1120" -X POST \
+    -d "{\"body\": \"Hello world\"}" \
+    "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"
+fi
 
-    lambda_name=${lambda/src\/components\//}
-    lambda_name=${lambda_name::-1}
-
-    
-    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-        printfln "${green}Skipping uploads for pull request build$reset"
-        exit 0
-    fi
-
-    if [ "${BRANCH}" == "dev" ] || [ "${BRANCH}" == "master" ]; then
-        printfln "in dev/master"
-    
-    fi
-    lambda_dir="$TRAVIS_BUILD_DIR/${lambda}"
-    
-    buildAndUpload $lambda_dir $lambda_name
-
-done
-
-printfln "done !!"
+printfln "Done..."
 
 
 
