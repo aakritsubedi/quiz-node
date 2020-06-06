@@ -34,8 +34,15 @@ important_file_pattern=(app.js index.js Procfile)
 for files in ${important_file_pattern[@]}; do
   printfln "here $files"
   functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "$files" | cat)
-  printfln "$functions"
+  if [ -n "$functions" ]; then
+    changed=1
+    break
+  fi
 done
+
+if [ -n "$changed" ]; then
+  echo "hello seems like sensetive files are changed"
+fi
 
 functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE )
 
