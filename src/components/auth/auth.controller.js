@@ -1,6 +1,6 @@
 const userService = require("../users/users.service");
 const { getApi } = require("../../utils/db/model");
-
+console.log("hello")
 module.exports = {
   login: async (request, response, next) => {
     const user = request.body;
