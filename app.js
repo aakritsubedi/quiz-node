@@ -6,7 +6,6 @@ const routes = require("./routes");
 const createTables = require("./src/migrations/index");
 const { errorHandler } = require("./src/middlewares/handleError");
 
-console.log("hello")
 // Initilize all database tables
 createTables.createAllTables();
 
