@@ -1,5 +1,6 @@
 const util = require("util");
 const pool = require("../../utils/db/dbConnect");
+console.log("hello")
 
 pool.query = util.promisify(pool.query);
 

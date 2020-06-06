@@ -1,6 +1,6 @@
 const userServices = require("./users.service");
 const { getApi } = require("../../utils/db/model");
-
+console.log("hello")
 module.exports = {
   fetch: async (request, response, next) => {
     let users = null;
