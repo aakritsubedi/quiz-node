@@ -30,7 +30,7 @@ git log --oneline $COMMIT_RANGE
 
 # Get the modified lambda functions if any
 
-important_file_pattern=(app.js index.js Procfile)
+important_file_pattern=(app\\.js index\\.js Procfile)
 for files in ${important_file_pattern[@]}; do
   printfln "here $files"
   functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "$files")
