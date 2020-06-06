@@ -29,6 +29,14 @@ printfln "Commit range: $COMMIT_RANGE"
 git log --oneline $COMMIT_RANGE
 
 # Get the modified lambda functions if any
-functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/components\/.+?\/" | cat | uniq)
+
+important_file-pattern=("app.js", "index.js", "Procfile")
+
+for files in ${important_file_pattern[@]}; do
+  functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/components\/.+?\/" | cat | uniq)
+done
+
+functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u)
+
 
 printfln "the changed files are $functions"
