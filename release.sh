@@ -31,11 +31,10 @@ git log --oneline $COMMIT_RANGE
 # Get the modified lambda functions if any
 
 important_file_pattern=("app.js" "index.js" "Procfile")
-count=1
 for files in ${important_file_pattern[@]}; do
   printfln "here"
   functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "$files")
-  printfln "$((count + 1)) $functions"
+  printfln "$functions"
 done
 
 functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE )
