@@ -36,7 +36,7 @@ for files in ${important_file_pattern[@]}; do
   functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE | sort -u | grep -oP "src\/components\/.+?\/" | cat | uniq)
 done
 
-functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE)
+functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE )
 
 
 printfln "the changed files are $functions"
