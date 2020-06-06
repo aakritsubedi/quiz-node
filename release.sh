@@ -29,6 +29,7 @@ printfln "Commit range: $COMMIT_RANGE"
 git log --oneline $COMMIT_RANGE
 
 # Get the modified lambda functions if any
+functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE )
 
 important_file_pattern=(app.js index.js Procfile)
 for files in ${important_file_pattern[@]}; do
@@ -39,11 +40,11 @@ for files in ${important_file_pattern[@]}; do
   fi
 done
 
-if [ -n "$changed" ]; then
-  echo "hello seems like sensetive files are changed"
+if [ -z "$changed" ]; then
+  echo "hello seems like no major changes will be seen in images"
+  exit 0
 fi
 
-functions=$(git diff --name-only $TRAVIS_COMMIT_RANGE )
 
 
 printfln "the changed files are $functions"
